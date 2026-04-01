@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valon Mortgage — Style Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Merriweather:ital,wght@0,700;0,900;1,700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* ── Valon DS: Mono ───────────────────────── */
+      --mono-1000: #000000;
+      --mono-900:  #27292b;
+      --mono-800:  #3d3f41;
+      --mono-700:  #4a4e51;
+      --mono-600:  #6f777a;
+      --mono-500:  #97a2a5;
+      --mono-400:  #c9d0d0;
+      --mono-300:  #f3f3f3;
+      --mono-200:  #fbfbfb;
+      --mono-100:  #ffffff;
+      /* ── Valon DS: Accent Secondary (interactive) */
+      --accent-600: #3762c3;
+      --accent-500: #4477eb;
+      --accent-100: #ebf3ff;
+      /* ── Valon DS: Brand ─────────────────────── */
+      --brand-gold:   #FFAD15;
+      --positive-600: #177326;
+      --positive-500: #37a03a;
+      --negative-600: #d92a2a;
+      --warning-600:  #f0a72d;
+
+      /* ── valon.com brand dark (warm brown) ─── */
+      --valon-brown:      #231810;     /* primary button, focus ring */
+      --valon-brown-hover:#3a2819;     /* button hover (10% lighter) */
+
+      /* ── Semantic aliases ────────────────────── */
+      --text-100:   var(--mono-900);   /* primary text   #27292b */
+      --text-80:    var(--mono-700);   /* body text      #4a4e51 */
+      --text-60:    var(--mono-600);   /* secondary text #6f777a */
+      --text-40:    var(--mono-500);   /* muted / labels #97a2a5 */
+      --color-dark: var(--mono-900);   /* header/footer bg */
+      --color-white: var(--mono-100);  /* white          #ffffff */
+      --surface:    var(--mono-300);   /* section alt bg #f3f3f3 */
+      --border:     var(--mono-400);   /* borders        #c9d0d0 */
+      --shadow:     0 4px 12px rgba(74, 78, 81, 0.15);
+
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --font-display: 'Merriweather', Georgia, serif;
+      --font-body: 'Lato', -apple-system, sans-serif;
+      --font-mono: 'Geist Mono', 'Courier New', monospace;
+      --max-width: 900px;
+      --transition: 150ms ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-white);
+      color: var(--text-100);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Sticky Nav ────────────────────────────────────────────── */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-dark);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .top-bar-logo {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+    .top-bar-label {
+      font-size: 11px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .top-bar nav {
+      display: flex;
+      gap: 24px;
+    }
+    .top-bar nav a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color var(--transition);
+    }
+    .top-bar nav a:hover { color: rgba(255,255,255,0.9); }
+
+    /* ─── Hero ──────────────────────────────────────────────────── */
+    .hero {
+      background: var(--color-dark);
+      padding: 96px 32px;
+      text-align: center;
+      color: #fff;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brand-gold);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: rgba(255,255,255,0.6);
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+    .hero-meta {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.08em;
+    }
+    .hero-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--brand-gold);
+      margin: 32px auto 0;
+      opacity: 0.6;
+    }
+
+    /* ─── Layout ────────────────────────────────────────────────── */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ─── Sections ──────────────────────────────────────────────── */
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section:last-child { border-bottom: none; }
+    .section-alt { background: var(--surface); }
+
+    .section-header { margin-bottom: 48px; }
+    .section-number {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brand-gold);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text-100);
+    }
+    .section-desc {
+      margin-top: 16px;
+      font-size: 17px;
+      color: var(--text-60);
+      max-width: 600px;
+      line-height: 1.65;
+    }
+
+    h3.subsection {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-40);
+      margin: 48px 0 20px;
+    }
+    h3.subsection:first-of-type { margin-top: 0; }
+
+    /* ─── Color Swatches ────────────────────────────────────────── */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+    .swatch {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .swatch-color {
+      height: 72px;
+    }
+    .swatch-info {
+      padding: 10px 12px;
+      background: var(--color-white);
+    }
+    .swatch-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-80);
+      display: block;
+    }
+    .swatch-value {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-40);
+      margin-top: 2px;
+      display: block;
+    }
+    .swatch-grid-row {
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+    }
+    .swatch-wide {
+      flex: 1;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .swatch-wide .swatch-color { height: 56px; }
+    .swatch-wide .swatch-info { padding: 8px 10px; }
+
+    /* ─── Typography Specimens ──────────────────────────────────── */
+    .type-specimen {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+    }
+    .type-meta {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .type-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-40);
+      background: var(--color-white);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+    .type-tag.highlight {
+      background: var(--color-dark);
+      color: rgba(255,255,255,0.85);
+      border-color: transparent;
+    }
+    /* headingXLarge — Merriweather 700 — 65px/75 web, 37px/44 mobile */
+    .specimen-display {
+      font-family: var(--font-display);
+      font-size: clamp(37px, 5.5vw, 65px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--text-100);
+    }
+    /* headingLarge — Merriweather 700 — 51px/58 web, 23px/31.7 mobile */
+    .specimen-heading-xl {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 51px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.14;
+      color: var(--text-100);
+    }
+    /* headingMedium — Merriweather 700 — 33px/38.8 web, 22px/26.6 mobile */
+    .specimen-heading-lg {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.8vw, 33px);
+      font-weight: 700;
+      line-height: 1.18;
+      color: var(--text-100);
+    }
+    /* headingSmall — Lato 700 — 31px/35 web, 23px/27 mobile */
+    .specimen-heading-md {
+      font-family: var(--font-body);
+      font-size: clamp(23px, 2.5vw, 31px);
+      font-weight: 700;
+      line-height: 1.13;
+      color: var(--text-100);
+    }
+    /* headingXSmall — Lato 700 — 26px/33 web, 21px/27 mobile */
+    .specimen-heading-sm {
+      font-family: var(--font-body);
+      font-size: clamp(21px, 2vw, 26px);
+      font-weight: 700;
+      line-height: 1.27;
+      color: var(--text-100);
+    }
+    /* subheading — Lato 700 — 19px/25 web, 17px/27 mobile */
+    .specimen-subheading {
+      font-family: var(--font-body);
+      font-size: clamp(17px, 1.5vw, 19px);
+      font-weight: 700;
+      line-height: 1.32;
+      color: var(--text-100);
+    }
+    /* paragraphLarge — Lato 400 — 26px/33 web, 16px/27 mobile */
+    .specimen-para-lg {
+      font-family: var(--font-body);
+      font-size: clamp(16px, 2vw, 26px);
+      font-weight: 400;
+      line-height: 1.27;
+      color: var(--text-80);
+    }
+    /* paragraphRegular — Lato 400 — 16px/27 */
+    .specimen-body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.69;
+      color: var(--text-80);
+    }
+    .specimen-label {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-40);
+    }
+    .specimen-mono {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--text-80);
+    }
+
+    /* ─── Spacing Scale ─────────────────────────────────────────── */
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .spacing-row:last-child { border-bottom: none; }
+    .spacing-bar-wrap { flex: 1; }
+    .spacing-bar {
+      height: 24px;
+      background: var(--accent-500);
+      border-radius: 3px;
+      opacity: 0.85;
+    }
+    .spacing-label {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-80);
+      width: 48px;
+      flex-shrink: 0;
+    }
+    .spacing-use {
+      font-size: 12px;
+      color: var(--text-40);
+      width: 200px;
+      flex-shrink: 0;
+    }
+
+    /* ─── Components ────────────────────────────────────────────── */
+    .component-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 600px) { .component-grid { grid-template-columns: 1fr; } }
+
+    .component-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+    }
+    .component-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-40);
+      margin-bottom: 20px;
+    }
+    .component-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: var(--valon-brown);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-md);
+      height: 48px;
+      padding: 0 24px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .btn-primary:hover { background: var(--valon-brown-hover); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--valon-brown);
+      border: 2px solid var(--valon-brown);
+      border-radius: var(--radius-md);
+      height: 48px;
+      padding: 0 24px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .btn-secondary:hover { background: var(--valon-brown); color: #fff; }
+    .btn-disabled {
+      background: var(--valon-brown);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-md);
+      height: 48px;
+      padding: 0 24px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    /* Card */
+    .card-demo {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .card-demo-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-100);
+      margin-bottom: 8px;
+    }
+    .card-demo-body {
+      font-size: 14px;
+      color: var(--text-60);
+      line-height: 1.5;
+    }
+    .card-demo-tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--positive-600);
+      background: rgba(23, 115, 38, 0.08);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    /* Form elements */
+    .input-demo {
+      width: 100%;
+      height: 48px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 0 16px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-100);
+      background: var(--color-white);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .input-demo:focus {
+      border-color: var(--valon-brown);
+      box-shadow: 0 0 0 2px rgba(35, 24, 16, 0.15);
+    }
+    .input-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-80);
+      margin-bottom: 6px;
+    }
+    .input-wrap { width: 100%; }
+
+    /* Focus ring demo */
+    .focus-demo {
+      outline: 2px solid var(--valon-brown);
+      outline-offset: 2px;
+      border-radius: var(--radius-md);
+    }
+
+    /* ─── Voice Table ────────────────────────────────────────────── */
+    .voice-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .voice-table th {
+      text-align: left;
+      padding: 12px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-40);
+      border-bottom: 2px solid var(--border);
+    }
+    .voice-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .voice-table tr:last-child td { border-bottom: none; }
+    .voice-table td:first-child {
+      color: var(--text-40);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      width: 160px;
+    }
+    .voice-table td:nth-child(2) { color: var(--text-80); }
+    .voice-table td:nth-child(3) {
+      color: var(--text-40);
+      text-decoration: line-through;
+      text-decoration-color: rgba(74,78,81,0.3);
+    }
+
+    /* ─── Word Lists ─────────────────────────────────────────────── */
+    .word-lists {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 600px) { .word-lists { grid-template-columns: 1fr; } }
+    .word-list-card {
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      border: 1px solid var(--border);
+    }
+    .word-list-card.do { background: rgba(74, 78, 81, 0.04); }
+    .word-list-card.dont { background: rgba(255, 80, 40, 0.03); border-color: rgba(200, 60, 30, 0.15); }
+    .word-list-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .word-list-card.do .word-list-title { color: var(--text-60); }
+    .word-list-card.dont .word-list-title { color: rgba(190, 50, 20, 0.7); }
+    .word-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip {
+      font-size: 13px;
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-weight: 400;
+    }
+    .chip-do {
+      background: var(--color-white);
+      color: var(--text-80);
+      border: 1px solid var(--border);
+    }
+    .chip-dont {
+      background: rgba(255,80,40,0.06);
+      color: rgba(160, 40, 10, 0.8);
+      border: 1px solid rgba(200, 60, 30, 0.2);
+    }
+
+    /* ─── Accessibility Table ────────────────────────────────────── */
+    .a11y-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .a11y-table th {
+      text-align: left;
+      padding: 10px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-40);
+      border-bottom: 2px solid var(--border);
+    }
+    .a11y-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.5;
+    }
+    .a11y-table tr:last-child td { border-bottom: none; }
+    .a11y-table td:first-child { color: var(--text-80); }
+    .a11y-table td:last-child {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-60);
+    }
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 100px;
+      background: var(--accent-500);
+      color: #fff;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* ─── Icon Demo ──────────────────────────────────────────────── */
+    .icon-row {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .icon-demo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 20px;
+      background: var(--color-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+    .icon-demo svg { display: block; }
+    .icon-demo span {
+      font-size: 11px;
+      color: var(--text-40);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ─── Photography ────────────────────────────────────────────── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 600px) { .photo-grid { grid-template-columns: 1fr 1fr; } }
+    .photo-do, .photo-dont {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--border);
+    }
+    .photo-label {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+    .photo-do .photo-label { background: rgba(39,41,43,0.85); color: #fff; }
+    .photo-dont .photo-label { background: rgba(200,50,20,0.85); color: #fff; }
+    .photo-swatch {
+      height: 180px;
+      display: flex;
+      align-items: flex-end;
+      padding: 12px;
+      background-size: cover;
+      background-position: center;
+    }
+    .photo-caption {
+      padding: 12px;
+      font-size: 12px;
+      color: var(--text-60);
+      line-height: 1.4;
+      background: var(--color-white);
+    }
+
+    /* ─── Legal Block ────────────────────────────────────────────── */
+    .legal-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-top: 24px;
+    }
+    .legal-block p {
+      font-size: 14px;
+      color: var(--text-60);
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+    .legal-block p:last-child { margin-bottom: 0; }
+    .legal-block strong { color: var(--text-80); }
+
+    /* ─── Site Structure ─────────────────────────────────────────── */
+    .site-tree {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-80);
+      background: var(--color-dark);
+      color: rgba(255,255,255,0.75);
+      padding: 32px;
+      border-radius: var(--radius-lg);
+      line-height: 2;
+    }
+    .site-tree .tree-root { color: var(--brand-gold); font-weight: 700; }
+    .site-tree .tree-child { color: rgba(255,255,255,0.6); }
+    .site-tree .tree-leaf { color: rgba(255,255,255,0.35); }
+
+    /* ─── Code Block ─────────────────────────────────────────────── */
+    code {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      background: rgba(74,78,81,0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--text-80);
+    }
+
+    /* ─── Callout ────────────────────────────────────────────────── */
+    .callout {
+      border-left: 3px solid var(--accent-500);
+      background: rgba(68, 119, 235, 0.05);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin: 24px 0;
+      font-size: 14px;
+      color: var(--text-60);
+      line-height: 1.6;
+    }
+    .callout strong { color: var(--text-80); }
+
+    /* ─── CTA Examples ───────────────────────────────────────────── */
+    .cta-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    /* ─── Logo Downloads ─────────────────────────────────────────── */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .logo-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+    .logo-preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 120px;
+      padding: 24px;
+    }
+    .logo-preview.on-light { background: var(--surface); }
+    .logo-preview.on-dark  { background: var(--valon-brown); }
+    .logo-preview img {
+      max-width: 100%;
+      max-height: 72px;
+      object-fit: contain;
+    }
+    .logo-card-footer {
+      padding: 12px 16px;
+      background: var(--color-white);
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .logo-card-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-100);
+    }
+    .logo-card-buttons {
+      display: flex;
+      gap: 8px;
+    }
+    .logo-dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--valon-brown);
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--font-body);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      transition: background var(--transition);
+      flex-shrink: 0;
+    }
+    .logo-dl:hover { background: var(--valon-brown-hover); }
+    .logo-dl svg { flex-shrink: 0; }
+
+    /* ─── Logo Don'ts ────────────────────────────────────────────── */
+    .logo-usage-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-40);
+      margin: 32px 0 12px;
+    }
+    .logo-donts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 12px;
+    }
+    .logo-dont-card {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1.5px solid var(--negative-600);
+    }
+    .logo-dont-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+    .logo-dont-label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-80);
+      background: var(--color-white);
+      border-top: 1px solid var(--border);
+    }
+    .logo-dont-x { color: var(--negative-600); font-weight: 900; flex-shrink: 0; }
+
+    /* ─── Print Color Table ───────────────────────────────────────── */
+    .print-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      font-family: var(--font-mono);
+    }
+    .print-table th {
+      text-align: left;
+      padding: 8px 10px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-40);
+      border-bottom: 2px solid var(--border);
+      font-family: var(--font-body);
+    }
+    .print-table td {
+      padding: 6px 10px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-80);
+      vertical-align: middle;
+    }
+    .print-table tr:last-child td { border-bottom: none; }
+    .print-name-cell {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--text-100);
+    }
+    .print-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      flex-shrink: 0;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────────── */
+    .footer {
+      background: var(--color-dark);
+      padding: 48px 32px;
+      text-align: center;
+    }
+    .footer p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer-logo {
+      font-family: var(--font-body);
+      font-weight: 900;
+      font-size: 18px;
+      color: #fff;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+    .footer-divider {
+      width: 32px;
+      height: 2px;
+      background: var(--brand-gold);
+      margin: 16px auto;
+      opacity: 0.5;
+    }
+
+    /* ─── Divider ────────────────────────────────────────────────── */
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Top Bar ─────────────────────────────────────────────────── -->
+  <header class="top-bar">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <span class="top-bar-logo">Valon Mortgage</span>
+      <span class="top-bar-label">Style Guide</span>
+    </div>
+    <nav>
+      <a href="#logos">Logo</a>
+      <a href="#brand">Brand</a>
+      <a href="#colors">Colors</a>
+      <a href="#type">Type</a>
+      <a href="#spacing">Spacing</a>
+      <a href="#components">Components</a>
+      <a href="#voice">Voice</a>
+      <a href="#legal">Legal</a>
+    </nav>
+  </header>
+
+  <!-- ── Hero ───────────────────────────────────────────────────── -->
+  <section class="hero">
+    <p class="hero-eyebrow">valon.com · Consumer</p>
+    <h1>There's no place<br>like home ownership</h1>
+    <p class="hero-sub">Design and content standards for the Valon Mortgage consumer website — the warm, trusted face homeowners see first.</p>
+    <p class="hero-meta">Last updated April 2026 &nbsp;·&nbsp; For valon.com &nbsp;·&nbsp; See also: valon.ai/style</p>
+    <div class="hero-divider"></div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       00 · LOGO DOWNLOADS
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section section-alt" id="logos">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-number">00</p>
+        <h2 class="section-title">Logo Downloads</h2>
+        <p class="section-desc">All official Valon Mortgage logo variants. Use the dark logo on light backgrounds and the light (white) logo on dark or brand-colored backgrounds. SVG preferred for print and digital; PNG for contexts that don't support vector.</p>
+      </div>
+
+      <div class="logo-grid">
+
+        <div class="logo-card">
+          <div class="logo-preview on-light">
+            <img src="assets/logos/vm-logo-dark.png" alt="Valon Mortgage light logo" />
+          </div>
+          <div class="logo-card-footer">
+            <div class="logo-card-name">Light Logo</div>
+            <div class="logo-card-buttons">
+              <a class="logo-dl" href="assets/logos/vm-logo-dark.png" download="vm-logo-dark.png">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3 6l3 3 3-3M1 10h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                PNG
+              </a>
+              <a class="logo-dl" href="assets/logos/vm-logo-dark.svg" download="vm-logo-dark.svg">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3 6l3 3 3-3M1 10h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                SVG
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-preview on-dark">
+            <img src="assets/logos/vm-logo-light.png" alt="Valon Mortgage dark logo" />
+          </div>
+          <div class="logo-card-footer">
+            <div class="logo-card-name">Dark Logo</div>
+            <div class="logo-card-buttons">
+              <a class="logo-dl" href="assets/logos/vm-logo-light.png" download="vm-logo-light.png">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3 6l3 3 3-3M1 10h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                PNG
+              </a>
+              <a class="logo-dl" href="assets/logos/vm-logo-light.svg" download="vm-logo-light.svg">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3 6l3 3 3-3M1 10h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                SVG
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-preview on-light">
+            <img src="assets/logos/vm-logo-bw.png" alt="Valon Mortgage black and white logo" />
+          </div>
+          <div class="logo-card-footer">
+            <div class="logo-card-name">Black and White Logo</div>
+            <div class="logo-card-buttons">
+              <a class="logo-dl" href="assets/logos/vm-logo-bw.png" download="vm-logo-B&W.png">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3 6l3 3 3-3M1 10h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                PNG
+              </a>
+              <a class="logo-dl" href="assets/logos/vm-logo-bw.svg" download="vm-logo-B&W.svg">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3 6l3 3 3-3M1 10h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                SVG
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /logo-grid -->
+
+      <!-- Icon usage -->
+      <p class="logo-usage-label" style="margin-top:32px;">Icon (mark only)</p>
+      <p style="font-size:14px;color:var(--text-60);line-height:1.65;margin-bottom:24px;max-width:620px;">The icon represents the sense of coming together that a home provides. Use it as a shorthand for the full logo. Primarily use it in gold (#FFAD15) or white — in the extended brand system other colors are allowed, but always ensure sufficient contrast with the background.</p>
+
+      <!-- Logo don'ts -->
+      <p class="logo-usage-label">Logo don'ts</p>
+      <div class="logo-donts-grid">
+        <div class="logo-dont-card">
+          <img class="logo-dont-img" src="assets/brand/Screenshot_2023-04-06_at_2.39.26_PM.png" alt="Logo on an angle" />
+          <div class="logo-dont-label"><span class="logo-dont-x">✕</span> Don't position on an angle</div>
+        </div>
+        <div class="logo-dont-card">
+          <img class="logo-dont-img" src="assets/brand/Screenshot_2023-04-06_at_2.39.31_PM.png" alt="Logo in unapproved colors" />
+          <div class="logo-dont-label"><span class="logo-dont-x">✕</span> Don't use unapproved colors</div>
+        </div>
+        <div class="logo-dont-card">
+          <img class="logo-dont-img" src="assets/brand/Screenshot_2023-04-06_at_2.39.37_PM.png" alt="Logo with effects applied" />
+          <div class="logo-dont-label"><span class="logo-dont-x">✕</span> Don't apply effects</div>
+        </div>
+        <div class="logo-dont-card">
+          <img class="logo-dont-img" src="assets/brand/Screenshot_2023-04-06_at_2.39.43_PM.png" alt="Logo with altered icon size" />
+          <div class="logo-dont-label"><span class="logo-dont-x">✕</span> Don't alter the icon size</div>
+        </div>
+        <div class="logo-dont-card">
+          <img class="logo-dont-img" src="assets/brand/Screenshot_2023-04-06_at_2.39.50_PM.png" alt="Logo with wrong typeface" />
+          <div class="logo-dont-label"><span class="logo-dont-x">✕</span> Don't change the typeface</div>
+        </div>
+        <div class="logo-dont-card">
+          <img class="logo-dont-img" src="assets/brand/Screenshot_2023-04-06_at_2.39.58_PM.png" alt="Logo with icon repositioned" />
+          <div class="logo-dont-label"><span class="logo-dont-x">✕</span> Don't reposition the icon</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       01 · BRAND IDENTITY
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="brand">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-number">01</p>
+        <h2 class="section-title">Brand Identity</h2>
+        <p class="section-desc">Valon Mortgage is the warm, knowledgeable partner beside every homeowner — not the slick salesperson in front of them.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="component-box">
+          <div class="component-label">Mission</div>
+          <p style="font-size:15px;color:var(--text-80);line-height:1.65;">We're on a mission to empower every homeowner, creating a world where homeownership comes with ease, security, and financial know-how.</p>
+        </div>
+        <div class="component-box">
+          <div class="component-label">Tagline</div>
+          <p style="font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:-0.01em;color:var(--text-100);">"There's no place like home ownership"</p>
+        </div>
+        <div class="component-box">
+          <div class="component-label">Audience</div>
+          <p style="font-size:15px;color:var(--text-80);line-height:1.65;">Current and prospective homeowners — first-time buyers, refinancers, homeowners managing existing mortgages.</p>
+        </div>
+        <div class="component-box">
+          <div class="component-label">Positioning</div>
+          <p style="font-size:15px;color:var(--text-80);line-height:1.65;">Modern fintech alternative to legacy servicers. Technology-forward, human-centered. Transparent about rates, fees, and process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       02 · COLORS
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section section-alt" id="colors">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-number">02</p>
+        <h2 class="section-title">Color System</h2>
+        <p class="section-desc">Two groups: <strong>Web Colors</strong> — used across the homeowner app, service console, and valon.com — and <strong>Brand Colors</strong> — used additionally for the website, lending pages, blog, and marketing. Sourced from the Valon design system (DS-Color).</p>
+      </div>
+
+      <!-- ── Web Colors ─────────────────────────────────── -->
+      <div style="display:inline-block;background:#4477EB;color:#fff;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:24px;">Web Colors</div>
+      <p style="font-size:14px;color:#6F777A;margin-bottom:32px;margin-top:-16px;">Used across the homeowner application, service console, and valon.com. Also used in notifications (email, mail).</p>
+
+      <h3 class="subsection" style="margin-top:0;">Mono — Default UI</h3>
+      <p style="font-size:13px;color:#97A2A5;margin-bottom:16px;">The baseline for all UI. Used unless there's a need for a semantic color.</p>
+      <div class="swatch-grid" style="grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:40px;">
+        <div class="swatch"><div class="swatch-color" style="background:#ffffff;border-bottom:1px solid #eee;"></div><div class="swatch-info"><span class="swatch-name">mono100</span><span class="swatch-value">#ffffff</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#fbfbfb;border-bottom:1px solid #eee;"></div><div class="swatch-info"><span class="swatch-name">mono200</span><span class="swatch-value">#fbfbfb</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#f3f3f3;"></div><div class="swatch-info"><span class="swatch-name">mono300</span><span class="swatch-value">#f3f3f3</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#c9d0d0;"></div><div class="swatch-info"><span class="swatch-name">mono400</span><span class="swatch-value">#c9d0d0</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#97a2a5;"></div><div class="swatch-info"><span class="swatch-name">mono500</span><span class="swatch-value">#97a2a5</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#6f777a;"></div><div class="swatch-info"><span class="swatch-name">mono600</span><span class="swatch-value">#6f777a</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#4a4e51;"></div><div class="swatch-info"><span class="swatch-name">mono700</span><span class="swatch-value">#4a4e51</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#3d3f41;"></div><div class="swatch-info"><span class="swatch-name">mono800</span><span class="swatch-value">#3d3f41</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#27292b;"></div><div class="swatch-info"><span class="swatch-name">mono900</span><span class="swatch-value">#27292b</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#000000;"></div><div class="swatch-info"><span class="swatch-name">mono1000</span><span class="swatch-value">#000000</span></div></div>
+      </div>
+
+      <h3 class="subsection">accentSecondary — Interactive Elements</h3>
+      <p style="font-size:13px;color:#97A2A5;margin-bottom:16px;">Links, expanders, inline interactive highlights. Used on valon.com for primary buttons and CTAs.</p>
+      <div class="swatch-grid" style="grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:40px;">
+        <div class="swatch"><div class="swatch-color" style="background:#ebf3ff;border-bottom:1px solid #dde;"></div><div class="swatch-info"><span class="swatch-name">aS100</span><span class="swatch-value">#ebf3ff</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#b7d4fc;"></div><div class="swatch-info"><span class="swatch-name">aS200</span><span class="swatch-value">#b7d4fc</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#83b0f8;"></div><div class="swatch-info"><span class="swatch-name">aS300</span><span class="swatch-value">#83b0f8</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#6194f3;"></div><div class="swatch-info"><span class="swatch-name">aS400</span><span class="swatch-value">#6194f3</span></div></div>
+        <div class="swatch" style="outline:2px solid #4477eb;outline-offset:2px;"><div class="swatch-color" style="background:#4477eb;"></div><div class="swatch-info"><span class="swatch-name">aS500 ★</span><span class="swatch-value">#4477eb</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#3762c3;"></div><div class="swatch-info"><span class="swatch-name">aS600</span><span class="swatch-value">#3762c3</span></div></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:40px;">
+        <!-- Positive -->
+        <div>
+          <h3 class="subsection" style="margin-top:0;">Positive</h3>
+          <p style="font-size:12px;color:#97A2A5;margin-bottom:12px;">Success states, confirmations.</p>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#f0fdee;flex-shrink:0;border-right:1px solid #eee;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">positive100</span><span class="swatch-value">#f0fdee</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#cce4cb;flex-shrink:0;border-right:1px solid #eee;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">positive200</span><span class="swatch-value">#cce4cb</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#90c58d;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">positive300</span><span class="swatch-value">#90c58d</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#6ba96a;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">positive400</span><span class="swatch-value">#6ba96a</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#37a03a;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">positive500</span><span class="swatch-value">#37a03a</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);outline:2px solid #177326;outline-offset:2px;"><div style="width:36px;height:36px;background:#177326;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">positive600 ★</span><span class="swatch-value">#177326</span></div></div>
+          </div>
+        </div>
+        <!-- accentPrimary / Warning -->
+        <div>
+          <h3 class="subsection" style="margin-top:0;">accentPrimary / Warning</h3>
+          <p style="font-size:12px;color:#97A2A5;margin-bottom:12px;">Caution states. <strong style="color:#4A4E51;">Never use as text color</strong> — fails contrast.</p>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#fffdee;flex-shrink:0;border-right:1px solid #eee;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">aP100 / w100</span><span class="swatch-value">#fffdee</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#f9eecf;flex-shrink:0;border-right:1px solid #eee;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">aP200 / w200</span><span class="swatch-value">#f9eecf</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#f5dfa8;flex-shrink:0;border-right:1px solid #eee;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">aP300 / w300</span><span class="swatch-value">#f5dfa8</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#f1cb82;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">aP400 / w400</span><span class="swatch-value">#f1cb82</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#f1ba50;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">aP500 / w500</span><span class="swatch-value">#f1ba50</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);outline:2px solid #f0a72d;outline-offset:2px;"><div style="width:36px;height:36px;background:#f0a72d;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">aP600 / w600 ★</span><span class="swatch-value">#f0a72d</span></div></div>
+          </div>
+        </div>
+        <!-- Negative -->
+        <div>
+          <h3 class="subsection" style="margin-top:0;">Negative</h3>
+          <p style="font-size:12px;color:#97A2A5;margin-bottom:12px;">Errors, destructive actions, critical alerts.</p>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#fff4f0;flex-shrink:0;border-right:1px solid #eee;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">negative100</span><span class="swatch-value">#fff4f0</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#fdd2c4;flex-shrink:0;border-right:1px solid #eee;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">negative200</span><span class="swatch-value">#fdd2c4</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#f8af9b;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">negative300</span><span class="swatch-value">#f8af9b</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#ef897b;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">negative400</span><span class="swatch-value">#ef897b</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#f25555;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">negative500</span><span class="swatch-value">#f25555</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);outline:2px solid #d92a2a;outline-offset:2px;"><div style="width:36px;height:36px;background:#d92a2a;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">negative600 ★</span><span class="swatch-value">#d92a2a</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Brand Colors ────────────────────────────────── -->
+      <div style="display:inline-block;background:#D23218;color:#fff;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:24px;">Brand Colors</div>
+      <p style="font-size:14px;color:#6F777A;margin-bottom:32px;margin-top:-16px;">Used in addition to web colors for the website, lending pages, blog, and marketing. These supplement the web palette — do not replace it.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:40px;">
+        <!-- Red + Orange -->
+        <div>
+          <h3 class="subsection" style="margin-top:0;">Red &amp; Orange</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#951414;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">brand-red300</span><span class="swatch-value">#951414</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#B32316;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">brand-red200</span><span class="swatch-value">#B32316</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#D23218;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">brand-red100</span><span class="swatch-value">#D23218</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#F35A1E;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">brand-orange200</span><span class="swatch-value">#F35A1E</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#F9841A;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">brand-orange100</span><span class="swatch-value">#F9841A</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#FFAD15;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">brand-gold</span><span class="swatch-value">#FFAD15</span></div></div>
+          </div>
+        </div>
+        <!-- Green -->
+        <div>
+          <h3 class="subsection" style="margin-top:0;">Green</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#17441B;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">brand-green300</span><span class="swatch-value">#17441B</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#245D25;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">brand-green200</span><span class="swatch-value">#245D25</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#31752F;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">brand-green100</span><span class="swatch-value">#31752F</span></div></div>
+          </div>
+        </div>
+        <!-- Blue -->
+        <div>
+          <h3 class="subsection" style="margin-top:0;">Blue</h3>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#0A3386;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">brand-blue300</span><span class="swatch-value">#0A3386</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#2155BD;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">brand-blue200</span><span class="swatch-value">#2155BD</span></div></div>
+            <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#3776F3;flex-shrink:0;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">brand-blue100</span><span class="swatch-value">#3776F3</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Print / Brand Color Values ──────────────────── -->
+      <h3 class="subsection">Print Values (brand colors)</h3>
+      <div style="background:var(--color-white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+        <table class="print-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>HEX</th>
+              <th>RGB</th>
+              <th>CMYK</th>
+              <th>PMS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><div class="print-name-cell"><span class="print-swatch" style="background:#FFAD15;"></span>Gold</div></td><td>#FFAD15</td><td>255, 173, 21</td><td>0, 32, 92, 0</td><td>2010 C</td></tr>
+            <tr><td><div class="print-name-cell"><span class="print-swatch" style="background:#F9841A;"></span>Orange 100</div></td><td>#F9841A</td><td>250, 132, 26</td><td>0, 46, 87, 2</td><td>1495 C</td></tr>
+            <tr><td><div class="print-name-cell"><span class="print-swatch" style="background:#F35A1E;"></span>Orange 200</div></td><td>#F35A1E</td><td>243, 90, 30</td><td>0, 60, 84, 5</td><td>165 C</td></tr>
+            <tr><td><div class="print-name-cell"><span class="print-swatch" style="background:#D23218;"></span>Red 100</div></td><td>#D23218</td><td>210, 50, 24</td><td>0, 63, 73, 18</td><td>3516 C</td></tr>
+            <tr><td><div class="print-name-cell"><span class="print-swatch" style="background:#B32316;"></span>Red 200</div></td><td>#B32316</td><td>179, 35, 22</td><td>0, 56, 62, 30</td><td>2350 C</td></tr>
+            <tr><td><div class="print-name-cell"><span class="print-swatch" style="background:#951414;"></span>Red 300</div></td><td>#951414</td><td>149, 20, 20</td><td>0, 51, 51, 42</td><td>7622 C</td></tr>
+            <tr><td><div class="print-name-cell"><span class="print-swatch" style="background:#3776F3;"></span>Blue 100</div></td><td>#3776F3</td><td>55, 118, 243</td><td>74, 49, 0, 5</td><td>2727 C</td></tr>
+            <tr><td><div class="print-name-cell"><span class="print-swatch" style="background:#2155BD;"></span>Blue 200</div></td><td>#2155BD</td><td>33, 85, 189</td><td>61, 41, 0, 26</td><td>3506 C</td></tr>
+            <tr><td><div class="print-name-cell"><span class="print-swatch" style="background:#0A3386;"></span>Blue 300</div></td><td>#0A3386</td><td>10, 51, 134</td><td>49, 33, 0, 47</td><td>287 C</td></tr>
+            <tr><td><div class="print-name-cell"><span class="print-swatch" style="background:#31752F;"></span>Green 100</div></td><td>#31752F</td><td>49, 117, 47</td><td>27, 0, 27, 54</td><td>2273 C</td></tr>
+            <tr><td><div class="print-name-cell"><span class="print-swatch" style="background:#245D25;"></span>Green 200</div></td><td>#245D25</td><td>36, 93, 37</td><td>22, 0, 22, 64</td><td>357 C</td></tr>
+            <tr><td><div class="print-name-cell"><span class="print-swatch" style="background:#17441B;"></span>Green 300</div></td><td>#17441B</td><td>23, 68, 27</td><td>18, 0, 16, 73</td><td>2411 C</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       03 · TYPOGRAPHY
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="type">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-number">03</p>
+        <h2 class="section-title">Typography</h2>
+        <p class="section-desc">Valon.com uses two typefaces. Merriweather sets all headings (XLarge through Medium); Lato handles smaller headings, body, and UI. Geist Mono is used for data and code only.</p>
+      </div>
+
+      <!-- headingXLarge -->
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-tag highlight">headingXLarge</span>
+          <span class="type-tag">Merriweather 700</span>
+          <span class="type-tag">65px / 75 · Mobile 37px / 44</span>
+        </div>
+        <p class="specimen-display">Make the most<br>of your home.</p>
+        <p style="font-size:12px;color:var(--text-40);margin-top:12px;">Oversized titles only. Use in moderation. Always apply negative letter-spacing.</p>
+      </div>
+
+      <!-- headingLarge -->
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-tag highlight">headingLarge</span>
+          <span class="type-tag">Merriweather 700</span>
+          <span class="type-tag">51px / 58 · Mobile 23px / 31.7</span>
+        </div>
+        <p class="specimen-heading-xl">Homeownership designed for you</p>
+      </div>
+
+      <!-- headingMedium -->
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-tag highlight">headingMedium</span>
+          <span class="type-tag">Merriweather 700</span>
+          <span class="type-tag">33px / 38.8 · Mobile 22px / 26.6</span>
+        </div>
+        <p class="specimen-heading-lg">We're your partner on this journey</p>
+      </div>
+
+      <!-- headingSmall -->
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-tag highlight">headingSmall</span>
+          <span class="type-tag">Lato 700</span>
+          <span class="type-tag">31px / 35 · Mobile 23px / 27</span>
+        </div>
+        <p class="specimen-heading-md">Great coverage. Great price.</p>
+      </div>
+
+      <!-- headingXSmall -->
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-tag highlight">headingXSmall</span>
+          <span class="type-tag">Lato 700</span>
+          <span class="type-tag">26px / 33 · Mobile 21px / 27</span>
+        </div>
+        <p class="specimen-heading-sm">How to choose the right mortgage for your family</p>
+      </div>
+
+      <!-- subheading -->
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-tag highlight">subheading</span>
+          <span class="type-tag">Lato 700</span>
+          <span class="type-tag">19px / 25 · Mobile 17px / 27</span>
+        </div>
+        <p class="specimen-subheading">Real people, available when you need them</p>
+      </div>
+
+      <!-- paragraphLarge -->
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-tag highlight">paragraphLarge</span>
+          <span class="type-tag">Lato 400</span>
+          <span class="type-tag">26px / 33 · Mobile 16px / 27</span>
+        </div>
+        <p class="specimen-para-lg">We're on a mission to empower every homeowner — creating a world where homeownership comes with ease, security, and financial know-how.</p>
+      </div>
+
+      <!-- paragraphRegular -->
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-tag highlight">paragraphRegular</span>
+          <span class="type-tag">Lato 400</span>
+          <span class="type-tag">16px / 27</span>
+        </div>
+        <p class="specimen-body">We're your partner on this journey — from the first application to the final payment. Our team of real people is available when you need them, and our technology makes managing your mortgage as simple as it should be.</p>
+      </div>
+
+      <!-- Mono -->
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-tag highlight">Geist Mono</span>
+          <span class="type-tag">Data &amp; code · 14px</span>
+        </div>
+        <p class="specimen-mono">NMLS #1907140 &nbsp;·&nbsp; Rate: 6.875% APR &nbsp;·&nbsp; rgba(35, 24, 16, 0.8)</p>
+      </div>
+
+      <div class="callout">
+        <strong>Note:</strong> Lato replaces Founders Grotesk as the body/UI font on valon.com. KMR Melange Grotesk is the valon.ai equivalent — do not substitute between the two sites.
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       04 · SPACING
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section section-alt" id="spacing">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-number">04</p>
+        <h2 class="section-title">Spacing</h2>
+        <p class="section-desc">Use only these eight values. No arbitrary measurements.</p>
+      </div>
+
+      <div style="background:var(--color-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 28px;">
+        <div class="spacing-row">
+          <span class="spacing-label">8px</span>
+          <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:8px;"></div></div>
+          <span class="spacing-use">Icon gaps, inline elements</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">16px</span>
+          <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:16px;"></div></div>
+          <span class="spacing-use">Mobile container margins</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">24px</span>
+          <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:24px;"></div></div>
+          <span class="spacing-use">Card padding (tablet)</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">32px</span>
+          <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:32px;"></div></div>
+          <span class="spacing-use">Card padding (desktop), mobile section padding</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">48px</span>
+          <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:48px;"></div></div>
+          <span class="spacing-use">Section padding (mobile top), tablet container margin</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">64px</span>
+          <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:64px;"></div></div>
+          <span class="spacing-use">Section padding (tablet), desktop container margin</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">96px</span>
+          <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:96px;"></div></div>
+          <span class="spacing-use">Section padding (desktop, min)</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">128px</span>
+          <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:128px;"></div></div>
+          <span class="spacing-use">Section padding (desktop, max)</span>
+        </div>
+      </div>
+
+      <h3 class="subsection" style="margin-top:48px;">Applied Spacing</h3>
+      <div style="background:var(--color-white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+        <table style="width:100%;border-collapse:collapse;font-size:14px;">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);">
+              <th style="text-align:left;padding:12px 16px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-40);">Element</th>
+              <th style="text-align:left;padding:12px 16px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-40);">Desktop</th>
+              <th style="text-align:left;padding:12px 16px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-40);">Tablet</th>
+              <th style="text-align:left;padding:12px 16px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-40);">Mobile</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:12px 16px;color:var(--text-80);">Section padding (vertical)</td>
+              <td style="padding:12px 16px;font-family:var(--font-mono);font-size:13px;color:var(--text-60);">80–128px</td>
+              <td style="padding:12px 16px;font-family:var(--font-mono);font-size:13px;color:var(--text-60);">64px</td>
+              <td style="padding:12px 16px;font-family:var(--font-mono);font-size:13px;color:var(--text-60);">32–48px</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:12px 16px;color:var(--text-80);">Container margin (horizontal)</td>
+              <td style="padding:12px 16px;font-family:var(--font-mono);font-size:13px;color:var(--text-60);">64px</td>
+              <td style="padding:12px 16px;font-family:var(--font-mono);font-size:13px;color:var(--text-60);">32px</td>
+              <td style="padding:12px 16px;font-family:var(--font-mono);font-size:13px;color:var(--text-60);">16px</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px;color:var(--text-80);">Card internal padding</td>
+              <td style="padding:12px 16px;font-family:var(--font-mono);font-size:13px;color:var(--text-60);">32px</td>
+              <td style="padding:12px 16px;font-family:var(--font-mono);font-size:13px;color:var(--text-60);">24px</td>
+              <td style="padding:12px 16px;font-family:var(--font-mono);font-size:13px;color:var(--text-60);">16px</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection">Layout</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="component-box">
+          <div class="component-label">Max-width</div>
+          <p style="font-family:var(--font-mono);font-size:18px;color:var(--text-80);">1300px centered</p>
+        </div>
+        <div class="component-box">
+          <div class="component-label">Breakpoints</div>
+          <p style="font-family:var(--font-mono);font-size:13px;color:var(--text-60);line-height:2;">
+            992px+ &nbsp; Desktop<br>
+            768–991px &nbsp; Tablet<br>
+            480–767px &nbsp; Mobile landscape<br>
+            &lt;480px &nbsp; Mobile
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       05 · COMPONENTS
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="components">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-number">05</p>
+        <h2 class="section-title">Components</h2>
+        <p class="section-desc">Core UI building blocks. All interactive elements maintain 150ms ease transitions by default.</p>
+      </div>
+
+      <h3 class="subsection">Buttons</h3>
+      <div class="component-grid">
+        <div class="component-box">
+          <div class="component-label">Primary · Default &amp; Hover</div>
+          <div class="component-preview">
+            <button class="btn-primary">See my options</button>
+            <button class="btn-primary" style="opacity:0.85;">Hover state</button>
+          </div>
+          <p style="margin-top:16px;font-size:12px;color:var(--text-40);font-family:var(--font-mono);">bg #231810 · white text · 8px radius · 48px height</p>
+        </div>
+        <div class="component-box">
+          <div class="component-label">Secondary &amp; Disabled</div>
+          <div class="component-preview">
+            <button class="btn-secondary">Apply now</button>
+            <button class="btn-disabled" disabled>Disabled</button>
+          </div>
+          <p style="margin-top:16px;font-size:12px;color:var(--text-40);font-family:var(--font-mono);">Outlined · disabled at 35% opacity</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Touch targets:</strong> 44×44px minimum on mobile, 32×32px on desktop. Never smaller.
+      </div>
+
+      <h3 class="subsection">Cards</h3>
+      <div class="component-grid">
+        <div class="component-box">
+          <div class="component-label">Standard Card</div>
+          <div class="card-demo">
+            <div class="card-demo-title">Your Mortgage at a Glance</div>
+            <div class="card-demo-body">Next payment of $2,148 is due on May 1st. Your escrow account is fully funded.</div>
+            <span class="card-demo-tag">On Track</span>
+          </div>
+          <p style="margin-top:16px;font-size:12px;color:var(--text-40);font-family:var(--font-mono);">bg #F8F6F3 · 12px radius · shadow 0 4px 12px rgba(35,24,16,0.1)</p>
+        </div>
+        <div class="component-box">
+          <div class="component-label">Focus Ring</div>
+          <div class="component-preview" style="padding:12px 0;">
+            <button class="btn-primary focus-demo">Focused element</button>
+          </div>
+          <p style="margin-top:16px;font-size:12px;color:var(--text-40);font-family:var(--font-mono);">2px solid #231810 · 2px offset · always visible</p>
+        </div>
+      </div>
+
+      <h3 class="subsection">Form Elements</h3>
+      <div class="component-grid">
+        <div class="component-box">
+          <div class="component-label">Text Input</div>
+          <div class="input-wrap">
+            <label class="input-label">Property ZIP code</label>
+            <input type="text" class="input-demo" placeholder="e.g. 90210" />
+          </div>
+          <p style="margin-top:12px;font-size:12px;color:var(--text-40);font-family:var(--font-mono);">Labels always visible above · never placeholder-only</p>
+        </div>
+        <div class="component-box">
+          <div class="component-label">Input — Error State</div>
+          <div class="input-wrap">
+            <label class="input-label" style="color:rgba(190,50,20,0.85);">Email address</label>
+            <input type="email" class="input-demo" style="border-color:rgba(190,50,20,0.6);" value="not-an-email" />
+            <p style="margin-top:8px;font-size:13px;color:rgba(190,50,20,0.85);">Enter a valid email address (e.g. name@example.com)</p>
+          </div>
+          <p style="margin-top:12px;font-size:12px;color:var(--text-40);font-family:var(--font-mono);">Error in text — never color alone</p>
+        </div>
+      </div>
+
+      <h3 class="subsection">Motion &amp; Transitions</h3>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <div class="component-box" style="flex:1;min-width:200px;">
+          <div class="component-label">Default interactive</div>
+          <p style="font-family:var(--font-mono);font-size:16px;color:var(--text-80);">150ms ease</p>
+        </div>
+        <div class="component-box" style="flex:1;min-width:200px;">
+          <div class="component-label">Accordion / expand</div>
+          <p style="font-family:var(--font-mono);font-size:16px;color:var(--text-80);">300ms ease</p>
+        </div>
+        <div class="component-box" style="flex:1;min-width:200px;">
+          <div class="component-label">Reduced motion</div>
+          <p style="font-family:var(--font-mono);font-size:14px;color:var(--text-60);">Respect prefers-<br>reduced-motion</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       06 · TONE OF VOICE
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section section-alt" id="voice">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-number">06</p>
+        <h2 class="section-title">Tone of Voice</h2>
+        <p class="section-desc">Write like a knowledgeable person, not a compliance document. Every word earns its place.</p>
+      </div>
+
+      <h3 class="subsection">Core Attributes</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:48px;">
+        <div class="component-box">
+          <p style="font-weight:700;font-size:15px;color:var(--text-100);margin-bottom:6px;">Warm, not cheerful</p>
+          <p style="font-size:14px;color:var(--text-60);line-height:1.55;">We care about homeowners genuinely. Avoid hollow enthusiasm. Be sincere.</p>
+        </div>
+        <div class="component-box">
+          <p style="font-weight:700;font-size:15px;color:var(--text-100);margin-bottom:6px;">Plain, not dumbed down</p>
+          <p style="font-size:14px;color:var(--text-60);line-height:1.55;">Mortgage is complex — meet people where they are. Use domain language when it helps; always contextualize it.</p>
+        </div>
+        <div class="component-box">
+          <p style="font-weight:700;font-size:15px;color:var(--text-100);margin-bottom:6px;">Confident, not pushy</p>
+          <p style="font-size:14px;color:var(--text-60);line-height:1.55;">State what we offer and let it stand. No pressure tactics, no manufactured urgency.</p>
+        </div>
+        <div class="component-box">
+          <p style="font-weight:700;font-size:15px;color:var(--text-100);margin-bottom:6px;">Human, not robotic</p>
+          <p style="font-size:14px;color:var(--text-60);line-height:1.55;">Contractions are fine. Short sentences are fine. Write like a helpful colleague, not a bot.</p>
+        </div>
+      </div>
+
+      <h3 class="subsection">Voice in Practice</h3>
+      <div style="background:var(--color-white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+        <table class="voice-table">
+          <thead>
+            <tr>
+              <th>Context</th>
+              <th>Use this</th>
+              <th>Not this</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Hero headline</td><td>"Make the most of your home"</td><td>"The #1 mortgage platform!"</td></tr>
+            <tr><td>Product copy</td><td>"Apply in 10–15 minutes"</td><td>"Seamless, frictionless experience"</td></tr>
+            <tr><td>Error state</td><td>"Something went wrong. Try again or call us."</td><td>"Oops! That's on us 😬"</td></tr>
+            <tr><td>Support</td><td>"Real people, available when you need them"</td><td>"24/7 omnichannel support"</td></tr>
+            <tr><td>CTA</td><td>"See my options"</td><td>"Get started today!"</td></tr>
+            <tr><td>Rate claim</td><td>"Competitive rates — see what you qualify for"</td><td>"Industry's lowest rates, guaranteed!"</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection">Words</h3>
+      <div class="word-lists">
+        <div class="word-list-card do">
+          <p class="word-list-title">Use</p>
+          <div class="word-chips">
+            <span class="chip chip-do">foundation</span>
+            <span class="chip chip-do">partner</span>
+            <span class="chip chip-do">clarity</span>
+            <span class="chip chip-do">straightforward</span>
+            <span class="chip chip-do">protection</span>
+            <span class="chip chip-do">equity</span>
+            <span class="chip chip-do">security</span>
+            <span class="chip chip-do">guidance</span>
+            <span class="chip chip-do">your home</span>
+            <span class="chip chip-do">your loan</span>
+            <span class="chip chip-do">transparency</span>
+          </div>
+        </div>
+        <div class="word-list-card dont">
+          <p class="word-list-title">Avoid</p>
+          <div class="word-chips">
+            <span class="chip chip-dont">seamless</span>
+            <span class="chip chip-dont">frictionless</span>
+            <span class="chip chip-dont">game-changing</span>
+            <span class="chip chip-dont">disrupting</span>
+            <span class="chip chip-dont">best-in-class</span>
+            <span class="chip chip-dont">synergies</span>
+            <span class="chip chip-dont">cutting-edge</span>
+            <span class="chip chip-dont">solutions</span>
+            <span class="chip chip-dont">guaranteed approval</span>
+            <span class="chip chip-dont">empower</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="subsection">Headlines</h3>
+      <div class="component-box" style="margin-top:0;">
+        <ul style="font-size:15px;color:var(--text-80);line-height:2.2;padding-left:20px;">
+          <li>3–8 words. Declarative. Lead with what the homeowner gains.</li>
+          <li>State a benefit, not a feature.</li>
+          <li>Use sentence case. Never ALL CAPS for emphasis.</li>
+          <li>Active voice. Subject → verb → object.</li>
+        </ul>
+      </div>
+
+      <h3 class="subsection">CTAs</h3>
+      <p style="font-size:15px;color:var(--text-60);margin-bottom:16px;">Primary actions should be direct and first-person where possible.</p>
+      <div class="cta-list">
+        <button class="btn-primary">See my options</button>
+        <button class="btn-primary">Apply now</button>
+        <button class="btn-primary">Get a mortgage</button>
+        <button class="btn-secondary">Calculate my rate</button>
+        <button class="btn-secondary">Request a demo</button>
+      </div>
+      <div class="callout" style="margin-top:24px;">
+        Avoid vague CTAs: <code>Learn more</code>, <code>Click here</code>, <code>Submit</code>. Avoid manufactured urgency: <code>Act now!</code>, <code>Limited time!</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       07 · PHOTOGRAPHY
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="photography">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-number">07</p>
+        <h2 class="section-title">Photography &amp; Imagery</h2>
+        <p class="section-desc">Warm, documentary style. Real moments in real homes — never staged stock.</p>
+      </div>
+
+      <div class="photo-grid">
+        <div class="photo-do">
+          <div class="photo-swatch" style="background-image:url('https://valon.com/wp-content/uploads/2024/04/father-daughter-baking.png');">
+            <span class="photo-label">Use</span>
+          </div>
+          <div class="photo-caption">Warm, candid home moments. Real families in real spaces.</div>
+        </div>
+        <div class="photo-do">
+          <div class="photo-swatch" style="background-image:url('https://valon.com/wp-content/uploads/2025/07/pexels-ketut-subiyanto-4245992_2000x750.jpg');">
+            <span class="photo-label">Use</span>
+          </div>
+          <div class="photo-caption">Diverse homeowners across life stages — families, first-time buyers, seniors.</div>
+        </div>
+        <div class="photo-do">
+          <div class="photo-swatch" style="background-image:url('https://valon.com/wp-content/uploads/2025/07/toa-heftiba-oKbQxVusp8M-unsplash_2000x750.jpg');">
+            <span class="photo-label">Use</span>
+          </div>
+          <div class="photo-caption">Documentary/cinematic. Warm tones, natural light, unposed subjects.</div>
+        </div>
+        <div class="photo-dont">
+          <div class="photo-swatch" style="background-image:url('https://images.pexels.com/photos/7681094/pexels-photo-7681094.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop');">
+            <span class="photo-label">Avoid</span>
+          </div>
+          <div class="photo-caption">Generic "finance" imagery — charts, documents, and data with no human or home context.</div>
+        </div>
+        <div class="photo-dont">
+          <div class="photo-swatch" style="background-image:url('https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop');">
+            <span class="photo-label">Avoid</span>
+          </div>
+          <div class="photo-caption">Posed group shots — forced smiles, suits, conference tables. Feels corporate, not human.</div>
+        </div>
+        <div class="photo-dont">
+          <div class="photo-swatch" style="background-image:url('https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop');">
+            <span class="photo-label">Avoid</span>
+          </div>
+          <div class="photo-caption">Staged office settings — business formality that signals transaction, not partnership.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       08 · ICONS
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-number">08</p>
+        <h2 class="section-title">Icons</h2>
+        <p class="section-desc">Source: Central Icons (centralicons.com, licensed). Outline style only — no filled icons.</p>
+      </div>
+      <div class="icon-row">
+        <div class="icon-demo">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 10L10 3L17 10V17H13V13H7V17H3V10Z" stroke="#231810" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span>20px · 1.5px</span>
+        </div>
+        <div class="icon-demo">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="7" stroke="#231810" stroke-width="1.5"/>
+            <path d="M10 7V10L12 12" stroke="#231810" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>20px · 1.5px</span>
+        </div>
+        <div class="icon-demo">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 10H16M10 4L16 10L10 16" stroke="#231810" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>20px · 1.5px</span>
+        </div>
+        <div class="icon-demo">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8H13M8 3L13 8L8 13" stroke="#231810" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>16px · 1px</span>
+        </div>
+        <div class="icon-demo">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 2C7.79 2 6 3.79 6 6C6 8.21 7.79 10 10 10C12.21 10 14 8.21 14 6C14 3.79 12.21 2 10 2Z" stroke="#231810" stroke-width="1.5"/>
+            <path d="M4 18C4 15.24 6.69 13 10 13C13.31 13 16 15.24 16 18" stroke="#231810" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>20px · 1.5px</span>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:24px;">
+        Standard: 20×20px, 1.5px stroke &nbsp;·&nbsp; Small (≤16px): 1px stroke &nbsp;·&nbsp; Style: outline only — never filled
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       09 · ACCESSIBILITY
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-number">09</p>
+        <h2 class="section-title">Accessibility <span class="badge">WCAG 2.1 AA</span></h2>
+        <p class="section-desc">Non-negotiable. Every component ships accessible or it doesn't ship.</p>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+        <table class="a11y-table">
+          <thead>
+            <tr><th>Requirement</th><th>Standard</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Normal text contrast</td><td>4.5:1 minimum</td></tr>
+            <tr><td>Large text (24px+) contrast</td><td>3:1 minimum</td></tr>
+            <tr><td>Touch targets — mobile</td><td>44×44px minimum</td></tr>
+            <tr><td>Touch targets — desktop</td><td>32×32px minimum</td></tr>
+            <tr><td>Focus indicators</td><td>Always visible · 2px solid #231810 · 2px offset</td></tr>
+            <tr><td>Reduced motion</td><td>Respect prefers-reduced-motion</td></tr>
+            <tr><td>Color alone</td><td>Never the sole information carrier</td></tr>
+            <tr><td>Semantic HTML</td><td>Required throughout</td></tr>
+            <tr><td>Form labels</td><td>Always programmatically associated</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       10 · PAGE GUIDELINES
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-number">10</p>
+        <h2 class="section-title">Page-Specific Guidelines</h2>
+        <p class="section-desc">How the brand standards apply to each major section of the site.</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="component-box">
+          <div class="component-label">Home</div>
+          <ul style="font-size:15px;color:var(--text-80);line-height:2;padding-left:20px;">
+            <li>Hero leads with the homeowner's goal, not Valon's capabilities</li>
+            <li>Primary CTAs: "See my options" or "Get a mortgage"</li>
+            <li>Social proof (reviews, NMLS) visible above the fold or immediately below hero</li>
+          </ul>
+        </div>
+        <div class="component-box">
+          <div class="component-label">Get a Mortgage / Apply</div>
+          <ul style="font-size:15px;color:var(--text-80);line-height:2;padding-left:20px;">
+            <li>Reinforce speed early: "Apply in 10–15 minutes"</li>
+            <li>Progress indicators on multi-step forms — always show where the user is</li>
+            <li>Error messages must be specific and actionable (not "Invalid input")</li>
+          </ul>
+        </div>
+        <div class="component-box">
+          <div class="component-label">Manage Your Mortgage</div>
+          <ul style="font-size:15px;color:var(--text-80);line-height:2;padding-left:20px;">
+            <li>Empathetic framing — users here may be in reactive mode</li>
+            <li>Lead with support availability: phone, email, portal access</li>
+            <li>Surface common actions first: make a payment, view statement, contact support</li>
+          </ul>
+        </div>
+        <div class="component-box">
+          <div class="component-label">Insurance</div>
+          <ul style="font-size:15px;color:var(--text-80);line-height:2;padding-left:20px;">
+            <li>Plain language about coverage — avoid policy jargon</li>
+            <li>Keep the directness of "Great coverage. Great price." throughout</li>
+            <li>Calculator must show results without requiring account creation</li>
+          </ul>
+        </div>
+        <div class="component-box">
+          <div class="component-label">Home Equity (HELOC / HELOAN / Debt Consolidation)</div>
+          <ul style="font-size:15px;color:var(--text-80);line-height:2;padding-left:20px;">
+            <li>Lead with use cases, not product names ("pay off debt", not "HELOAN")</li>
+            <li>Calculators update in real time — no submit required</li>
+            <li>Disclose rates and terms clearly; never bury APR in footnotes</li>
+          </ul>
+        </div>
+        <div class="component-box">
+          <div class="component-label">Blog (Inside Valon · Valon Tech Talk)</div>
+          <ul style="font-size:15px;color:var(--text-80);line-height:2;padding-left:20px;">
+            <li>Bylines required on all posts</li>
+            <li>Educational value over SEO stuffing</li>
+            <li>Tech Talk posts may use more domain-specific language</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       11 · LEGAL & COMPLIANCE
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="legal">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-number">11</p>
+        <h2 class="section-title">Legal &amp; Compliance</h2>
+        <p class="section-desc">Required on every page. Non-negotiable in regulated mortgage content.</p>
+      </div>
+
+      <div class="legal-block">
+        <p><strong>NMLS ID #1907140</strong> must appear in the footer of all pages. Licensed in all 50 states + DC — licensing page link required in footer.</p>
+        <p>Rates and APR must be displayed with required disclosures. <strong>"Loans subject to approval"</strong> or equivalent must accompany any rate or payment example.</p>
+        <p>Links to <strong>Privacy Policy, Terms &amp; Conditions,</strong> and <strong>Data Sharing Consent</strong> required in footer.</p>
+        <p>Do not use <strong>"guarantee"</strong> or <strong>"guaranteed approval"</strong> in any copy — ever.</p>
+      </div>
+
+      <h3 class="subsection">Footer Contact (Required)</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+        <div class="component-box">
+          <div class="component-label">Customer Service</div>
+          <p style="font-family:var(--font-mono);font-size:15px;color:var(--text-80);">855-218-3690</p>
+        </div>
+        <div class="component-box">
+          <div class="component-label">Lending</div>
+          <p style="font-family:var(--font-mono);font-size:15px;color:var(--text-80);">877-204-4968<br>888-603-3902</p>
+        </div>
+        <div class="component-box">
+          <div class="component-label">Email</div>
+          <p style="font-family:var(--font-mono);font-size:14px;color:var(--text-80);">loans@valon.com<br>support@valon.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       12 · SITE STRUCTURE
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-number">12</p>
+        <h2 class="section-title">Site Structure</h2>
+        <p class="section-desc">Reference map of all published pages as of April 2026.</p>
+      </div>
+      <div class="site-tree">
+        <span class="tree-root">valon.com/</span><br>
+        <span class="tree-child">├── Home</span><br>
+        <span class="tree-child">├── Get a Mortgage</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; ├── Purchase</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; └── Refinance</span><br>
+        <span class="tree-child">├── Manage Your Mortgage</span><br>
+        <span class="tree-child">├── Insurance</span><br>
+        <span class="tree-child">├── Home Equity Solutions</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; ├── HELOC</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; ├── HELOAN</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; └── Debt Consolidation</span><br>
+        <span class="tree-child">├── Tools / Calculators</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; ├── Home Purchase Loan Calculator</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; ├── HELOC / HELOAN Calculator</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; ├── Debt Consolidation Calculator</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; └── Insurance Calculator</span><br>
+        <span class="tree-child">├── About Us</span><br>
+        <span class="tree-child">├── Careers</span><br>
+        <span class="tree-child">├── Partners</span><br>
+        <span class="tree-child">├── Blog</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; ├── Inside Valon</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; └── Valon Tech Talk</span><br>
+        <span class="tree-child">├── Contact</span><br>
+        <span class="tree-child">└── Legal</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; ├── Privacy Policy</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; ├── Terms &amp; Conditions</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; ├── Security</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; ├── Licenses</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; ├── Fees</span><br>
+        <span class="tree-leaf">&nbsp;&nbsp;&nbsp; └── Data Sharing Consent</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-logo">Valon Mortgage</div>
+    <div class="footer-divider"></div>
+    <p>
+      NMLS ID #1907140 · Licensed in all 50 states + DC<br>
+      <a href="#">Privacy Policy</a> · <a href="#">Terms &amp; Conditions</a> · <a href="#">Licenses</a> · <a href="#">Data Sharing Consent</a><br><br>
+      This is an internal style guide for valon.com. For the B2B technology platform, see <a href="https://www.valon.ai/style">valon.ai/style</a>.
+    </p>
+  </footer>
+
+</body>
+</html>
