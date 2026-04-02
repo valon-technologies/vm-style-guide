@@ -49,7 +49,7 @@
       --text-40:    rgba(35, 24, 16, 0.4);   /* labels, captions        */
       --color-dark: #1E3A2D;                  /* nav, hero, footer bg    */
       --color-white: #ffffff;
-      --surface:    #F8F6F3;                  /* cards, alt sections     */
+      --surface:    #f3f3f3;                  /* cards, alt sections = mono-300 */
       --border:     rgba(35, 24, 16, 0.1);   /* borders, dividers       */
       --shadow:     0 4px 16px rgba(35, 24, 16, 0.08);
 
@@ -597,7 +597,7 @@
       padding: 24px;
       border: 1px solid var(--border);
     }
-    .word-list-card.do { background: rgba(35, 24, 16, 0.04); }
+    .word-list-card.do { background: var(--mono-300); }
     .word-list-card.dont { background: rgba(255, 80, 40, 0.03); border-color: rgba(200, 60, 30, 0.15); }
     .word-list-title {
       font-size: 11px;
@@ -784,7 +784,7 @@
     /* ─── Callout ────────────────────────────────────────────────── */
     .callout {
       border-left: 3px solid var(--accent-500);
-      background: rgba(35, 24, 16, 0.05);
+      background: var(--mono-300);
       padding: 16px 20px;
       border-radius: 0 var(--radius-md) var(--radius-md) 0;
       margin: 24px 0;
@@ -823,7 +823,7 @@
       height: 120px;
       padding: 24px;
     }
-    .logo-preview.on-light { background: var(--surface); }
+    .logo-preview.on-light { background: var(--color-white); }
     .logo-preview.on-dark  { background: var(--valon-brown); }
     .logo-preview img {
       max-width: 100%;
@@ -1837,7 +1837,7 @@
         <h2 class="section-title">Accessibility <span class="badge">WCAG 2.1 AA</span></h2>
         <p class="section-desc">Non-negotiable. Every component ships accessible or it doesn't ship.</p>
       </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+      <div style="background:var(--color-white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
         <table class="a11y-table">
           <thead>
             <tr><th>Requirement</th><th>Standard</th></tr>
