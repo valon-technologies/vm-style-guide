@@ -123,11 +123,10 @@
 
     /* ─── Hero ──────────────────────────────────────────────────── */
     .hero {
-      background: var(--valon-green);
-      background-image: radial-gradient(ellipse at 70% 50%, rgba(255,173,21,0.07) 0%, transparent 60%);
+      background: var(--brand-gold);
       padding: 96px 32px;
       text-align: center;
-      color: #fff;
+      color: var(--valon-brown);
       position: relative;
       overflow: hidden;
     }
@@ -136,16 +135,15 @@
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--brand-gold);
+      color: var(--valon-brown);
       margin-bottom: 24px;
-      opacity: 0.9;
+      opacity: 0.6;
     }
     .hero-logo {
       margin: 0 auto 40px;
       display: block;
       height: 44px;
       width: auto;
-      opacity: 0.95;
     }
     .hero h1 {
       font-family: var(--font-display);
@@ -153,27 +151,27 @@
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1.08;
-      color: #fff;
+      color: var(--valon-brown);
       margin-bottom: 24px;
     }
     .hero-sub {
       font-size: 18px;
-      color: rgba(255,255,255,0.65);
+      color: rgba(35, 24, 16, 0.65);
       max-width: 560px;
       margin: 0 auto 32px;
       line-height: 1.65;
     }
     .hero-meta {
       font-size: 12px;
-      color: rgba(255,255,255,0.3);
+      color: rgba(35, 24, 16, 0.4);
       letter-spacing: 0.08em;
     }
     .hero-divider {
       width: 40px;
       height: 2px;
-      background: var(--brand-gold);
+      background: var(--valon-brown);
       margin: 32px auto 0;
-      opacity: 0.5;
+      opacity: 0.25;
     }
 
     /* ─── Layout ────────────────────────────────────────────────── */
@@ -297,8 +295,8 @@
       border-radius: 100px;
     }
     .type-tag.highlight {
-      background: var(--valon-green);
-      color: rgba(255,255,255,0.9);
+      background: var(--brand-gold);
+      color: rgba(35, 24, 16, 0.9);
       border-color: transparent;
     }
     /* headingXLarge — Merriweather 700 — 65px/75 web, 37px/44 mobile */
@@ -393,9 +391,9 @@
     .spacing-bar-wrap { flex: 1; }
     .spacing-bar {
       height: 24px;
-      background: var(--valon-green);
+      background: var(--brand-gold);
       border-radius: 3px;
-      opacity: 0.7;
+      opacity: 1;
     }
     .spacing-label {
       font-family: var(--font-mono);
@@ -668,7 +666,7 @@
       text-transform: uppercase;
       padding: 3px 8px;
       border-radius: 100px;
-      background: var(--valon-green);
+      background: var(--brand-gold);
       color: #fff;
       margin-left: 8px;
       vertical-align: middle;
@@ -950,18 +948,18 @@
 
     /* ─── Footer ─────────────────────────────────────────────────── */
     .footer {
-      background: var(--valon-green);
+      background: var(--brand-gold);
       padding: 56px 32px;
       text-align: center;
     }
     .footer p {
       font-size: 12px;
-      color: rgba(255,255,255,0.35);
+      color: rgba(35, 24, 16, 0.55);
       line-height: 1.8;
       max-width: 600px;
       margin: 0 auto;
     }
-    .footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer a { color: rgba(35, 24, 16, 0.7); text-decoration: none; }
     .footer-logo {
       margin: 0 auto 20px;
       display: block;
@@ -971,9 +969,9 @@
     .footer-divider {
       width: 32px;
       height: 2px;
-      background: var(--brand-gold);
+      background: var(--valon-brown);
       margin: 20px auto;
-      opacity: 0.4;
+      opacity: 0.2;
     }
 
     /* ─── Divider ────────────────────────────────────────────────── */
@@ -1006,7 +1004,7 @@
 
   <!-- ── Hero ───────────────────────────────────────────────────── -->
   <section class="hero">
-    <img src="assets/logos/vm-logo-light.svg" alt="Valon Mortgage" class="hero-logo" />
+    <img src="assets/logos/vm-logo-dark.svg" alt="Valon Mortgage" class="hero-logo" />
     <p class="hero-eyebrow">valon.com · Consumer</p>
     <h1>There's no place<br>like home ownership</h1>
     <p class="hero-sub">Design and content standards for the Valon Mortgage consumer website — the warm, trusted face homeowners see first.</p>
@@ -2007,7 +2005,7 @@
 
   <!-- ── Footer ─────────────────────────────────────────────────── -->
   <footer class="footer">
-    <img src="assets/logos/vm-logo-light.svg" alt="Valon Mortgage" class="footer-logo" />
+    <img src="assets/logos/vm-logo-dark.svg" alt="Valon Mortgage" class="footer-logo" />
     <div class="footer-divider"></div>
     <p>
       NMLS ID #1907140 · Licensed in all 50 states + DC<br>
