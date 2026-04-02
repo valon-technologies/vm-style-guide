@@ -38,16 +38,20 @@
       --valon-brown:      #231810;
       --valon-brown-hover:rgba(35, 24, 16, 0.82);
 
+      /* ── valon.com forest green ─────────────── */
+      --valon-green:      #1E3A2D;
+      --valon-green-hover:rgba(30, 58, 45, 0.88);
+
       /* ── Semantic aliases (warm, matching valon.com) */
       --text-100:   rgba(35, 24, 16, 1.0);   /* headings, primary text  */
       --text-80:    rgba(35, 24, 16, 0.8);   /* body copy, subtitles    */
       --text-60:    rgba(35, 24, 16, 0.6);   /* supporting descriptions */
       --text-40:    rgba(35, 24, 16, 0.4);   /* labels, captions        */
-      --color-dark: #231810;                  /* nav, hero, footer bg    */
+      --color-dark: #1E3A2D;                  /* nav, hero, footer bg    */
       --color-white: #ffffff;
       --surface:    #F8F6F3;                  /* cards, alt sections     */
       --border:     rgba(35, 24, 16, 0.1);   /* borders, dividers       */
-      --shadow:     0 4px 12px rgba(35, 24, 16, 0.1);
+      --shadow:     0 4px 16px rgba(35, 24, 16, 0.08);
 
       --radius-sm: 6px;
       --radius-md: 8px;
@@ -75,29 +79,33 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--color-dark);
+      background: var(--color-white);
       padding: 0 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 56px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      height: 64px;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 4px rgba(35, 24, 16, 0.06);
     }
-    .top-bar-logo {
-      font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 14px;
-      color: #fff;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      opacity: 0.9;
+    .top-bar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .top-bar-brand img {
+      height: 26px;
+      width: auto;
+      display: block;
     }
     .top-bar-label {
       font-size: 11px;
-      font-weight: 400;
-      color: rgba(255,255,255,0.4);
+      font-weight: 600;
+      color: var(--text-40);
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      padding-left: 12px;
+      border-left: 1px solid var(--border);
     }
     .top-bar nav {
       display: flex;
@@ -105,19 +113,23 @@
     }
     .top-bar nav a {
       font-size: 12px;
-      color: rgba(255,255,255,0.5);
+      color: var(--text-60);
       text-decoration: none;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
       transition: color var(--transition);
+      font-weight: 600;
     }
-    .top-bar nav a:hover { color: rgba(255,255,255,0.9); }
+    .top-bar nav a:hover { color: var(--text-100); }
 
     /* ─── Hero ──────────────────────────────────────────────────── */
     .hero {
-      background: var(--color-dark);
+      background: var(--valon-green);
+      background-image: radial-gradient(ellipse at 70% 50%, rgba(255,173,21,0.07) 0%, transparent 60%);
       padding: 96px 32px;
       text-align: center;
       color: #fff;
+      position: relative;
+      overflow: hidden;
     }
     .hero-eyebrow {
       font-size: 11px;
@@ -126,22 +138,30 @@
       text-transform: uppercase;
       color: var(--brand-gold);
       margin-bottom: 24px;
+      opacity: 0.9;
+    }
+    .hero-logo {
+      margin: 0 auto 40px;
+      display: block;
+      height: 44px;
+      width: auto;
+      opacity: 0.95;
     }
     .hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(48px, 7vw, 80px);
+      font-size: clamp(40px, 6vw, 72px);
       font-weight: 700;
       letter-spacing: -0.02em;
-      line-height: 1.05;
+      line-height: 1.08;
       color: #fff;
       margin-bottom: 24px;
     }
     .hero-sub {
       font-size: 18px;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.65);
       max-width: 560px;
       margin: 0 auto 32px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
     .hero-meta {
       font-size: 12px;
@@ -149,11 +169,11 @@
       letter-spacing: 0.08em;
     }
     .hero-divider {
-      width: 48px;
+      width: 40px;
       height: 2px;
       background: var(--brand-gold);
       margin: 32px auto 0;
-      opacity: 0.6;
+      opacity: 0.5;
     }
 
     /* ─── Layout ────────────────────────────────────────────────── */
@@ -277,8 +297,8 @@
       border-radius: 100px;
     }
     .type-tag.highlight {
-      background: var(--color-dark);
-      color: rgba(255,255,255,0.85);
+      background: var(--valon-green);
+      color: rgba(255,255,255,0.9);
       border-color: transparent;
     }
     /* headingXLarge — Merriweather 700 — 65px/75 web, 37px/44 mobile */
@@ -373,9 +393,9 @@
     .spacing-bar-wrap { flex: 1; }
     .spacing-bar {
       height: 24px;
-      background: var(--accent-500);
+      background: var(--valon-green);
       border-radius: 3px;
-      opacity: 0.85;
+      opacity: 0.7;
     }
     .spacing-label {
       font-family: var(--font-mono);
@@ -648,7 +668,7 @@
       text-transform: uppercase;
       padding: 3px 8px;
       border-radius: 100px;
-      background: var(--accent-500);
+      background: var(--valon-green);
       color: #fff;
       margin-left: 8px;
       vertical-align: middle;
@@ -930,32 +950,30 @@
 
     /* ─── Footer ─────────────────────────────────────────────────── */
     .footer {
-      background: var(--color-dark);
-      padding: 48px 32px;
+      background: var(--valon-green);
+      padding: 56px 32px;
       text-align: center;
     }
     .footer p {
       font-size: 12px;
-      color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.35);
       line-height: 1.8;
       max-width: 600px;
       margin: 0 auto;
     }
     .footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
     .footer-logo {
-      font-family: var(--font-body);
-      font-weight: 900;
-      font-size: 18px;
-      color: #fff;
-      letter-spacing: 0.04em;
-      margin-bottom: 16px;
+      margin: 0 auto 20px;
+      display: block;
+      height: 32px;
+      width: auto;
     }
     .footer-divider {
       width: 32px;
       height: 2px;
       background: var(--brand-gold);
-      margin: 16px auto;
-      opacity: 0.5;
+      margin: 20px auto;
+      opacity: 0.4;
     }
 
     /* ─── Divider ────────────────────────────────────────────────── */
@@ -970,8 +988,8 @@
 
   <!-- ── Top Bar ─────────────────────────────────────────────────── -->
   <header class="top-bar">
-    <div style="display:flex;align-items:center;gap:16px;">
-      <span class="top-bar-logo">Valon Mortgage</span>
+    <div class="top-bar-brand">
+      <img src="assets/logos/vm-logo-dark.svg" alt="Valon Mortgage" />
       <span class="top-bar-label">Style Guide</span>
     </div>
     <nav>
@@ -988,6 +1006,7 @@
 
   <!-- ── Hero ───────────────────────────────────────────────────── -->
   <section class="hero">
+    <img src="assets/logos/vm-logo-light.svg" alt="Valon Mortgage" class="hero-logo" />
     <p class="hero-eyebrow">valon.com · Consumer</p>
     <h1>There's no place<br>like home ownership</h1>
     <p class="hero-sub">Design and content standards for the Valon Mortgage consumer website — the warm, trusted face homeowners see first.</p>
@@ -1988,7 +2007,7 @@
 
   <!-- ── Footer ─────────────────────────────────────────────────── -->
   <footer class="footer">
-    <div class="footer-logo">Valon Mortgage</div>
+    <img src="assets/logos/vm-logo-light.svg" alt="Valon Mortgage" class="footer-logo" />
     <div class="footer-divider"></div>
     <p>
       NMLS ID #1907140 · Licensed in all 50 states + DC<br>
