@@ -34,20 +34,20 @@
       --negative-600: #d92a2a;
       --warning-600:  #f0a72d;
 
-      /* ── valon.com brand dark (warm brown) ─── */
-      --valon-brown:      #231810;     /* primary button, focus ring */
-      --valon-brown-hover:#3a2819;     /* button hover (10% lighter) */
+      /* ── valon.com warm brown system ────────── */
+      --valon-brown:      #231810;
+      --valon-brown-hover:rgba(35, 24, 16, 0.82);
 
-      /* ── Semantic aliases ────────────────────── */
-      --text-100:   var(--mono-900);   /* primary text   #27292b */
-      --text-80:    var(--mono-700);   /* body text      #4a4e51 */
-      --text-60:    var(--mono-600);   /* secondary text #6f777a */
-      --text-40:    var(--mono-500);   /* muted / labels #97a2a5 */
-      --color-dark: var(--mono-900);   /* header/footer bg */
-      --color-white: var(--mono-100);  /* white          #ffffff */
-      --surface:    var(--mono-300);   /* section alt bg #f3f3f3 */
-      --border:     var(--mono-400);   /* borders        #c9d0d0 */
-      --shadow:     0 4px 12px rgba(74, 78, 81, 0.15);
+      /* ── Semantic aliases (warm, matching valon.com) */
+      --text-100:   rgba(35, 24, 16, 1.0);   /* headings, primary text  */
+      --text-80:    rgba(35, 24, 16, 0.8);   /* body copy, subtitles    */
+      --text-60:    rgba(35, 24, 16, 0.6);   /* supporting descriptions */
+      --text-40:    rgba(35, 24, 16, 0.4);   /* labels, captions        */
+      --color-dark: #231810;                  /* nav, hero, footer bg    */
+      --color-white: #ffffff;
+      --surface:    #F8F6F3;                  /* cards, alt sections     */
+      --border:     rgba(35, 24, 16, 0.1);   /* borders, dividers       */
+      --shadow:     0 4px 12px rgba(35, 24, 16, 0.1);
 
       --radius-sm: 6px;
       --radius-md: 8px;
@@ -579,7 +579,7 @@
       padding: 24px;
       border: 1px solid var(--border);
     }
-    .word-list-card.do { background: rgba(74, 78, 81, 0.04); }
+    .word-list-card.do { background: rgba(35, 24, 16, 0.04); }
     .word-list-card.dont { background: rgba(255, 80, 40, 0.03); border-color: rgba(200, 60, 30, 0.15); }
     .word-list-title {
       font-size: 11px;
@@ -766,7 +766,7 @@
     /* ─── Callout ────────────────────────────────────────────────── */
     .callout {
       border-left: 3px solid var(--accent-500);
-      background: rgba(68, 119, 235, 0.05);
+      background: rgba(35, 24, 16, 0.05);
       padding: 16px 20px;
       border-radius: 0 var(--radius-md) var(--radius-md) 0;
       margin: 24px 0;
@@ -1148,10 +1148,10 @@
 
       <!-- ── Web Colors ─────────────────────────────────── -->
       <div style="display:inline-block;background:#4477EB;color:#fff;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:24px;">Web Colors</div>
-      <p style="font-size:14px;color:#6F777A;margin-bottom:32px;margin-top:-16px;">Used across the homeowner application, service console, and valon.com. Also used in notifications (email, mail).</p>
+      <p style="font-size:14px;color:rgba(35,24,16,0.6);margin-bottom:32px;margin-top:-16px;">Used across the homeowner application, service console, and valon.com. Also used in notifications (email, mail).</p>
 
       <h3 class="subsection" style="margin-top:0;">Mono — Default UI</h3>
-      <p style="font-size:13px;color:#97A2A5;margin-bottom:16px;">The baseline for all UI. Used unless there's a need for a semantic color.</p>
+      <p style="font-size:13px;color:rgba(35,24,16,0.4);margin-bottom:16px;">The baseline for all UI. Used unless there's a need for a semantic color.</p>
       <div class="swatch-grid" style="grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:40px;">
         <div class="swatch"><div class="swatch-color" style="background:#ffffff;border-bottom:1px solid #eee;"></div><div class="swatch-info"><span class="swatch-name">mono100</span><span class="swatch-value">#ffffff</span></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#fbfbfb;border-bottom:1px solid #eee;"></div><div class="swatch-info"><span class="swatch-name">mono200</span><span class="swatch-value">#fbfbfb</span></div></div>
@@ -1166,7 +1166,7 @@
       </div>
 
       <h3 class="subsection">accentSecondary — Interactive Elements</h3>
-      <p style="font-size:13px;color:#97A2A5;margin-bottom:16px;">Links, expanders, inline interactive highlights. Used on valon.com for primary buttons and CTAs.</p>
+      <p style="font-size:13px;color:rgba(35,24,16,0.4);margin-bottom:16px;">Links, expanders, inline interactive highlights. Used on valon.com for primary buttons and CTAs.</p>
       <div class="swatch-grid" style="grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:40px;">
         <div class="swatch"><div class="swatch-color" style="background:#ebf3ff;border-bottom:1px solid #dde;"></div><div class="swatch-info"><span class="swatch-name">aS100</span><span class="swatch-value">#ebf3ff</span></div></div>
         <div class="swatch"><div class="swatch-color" style="background:#b7d4fc;"></div><div class="swatch-info"><span class="swatch-name">aS200</span><span class="swatch-value">#b7d4fc</span></div></div>
@@ -1180,7 +1180,7 @@
         <!-- Positive -->
         <div>
           <h3 class="subsection" style="margin-top:0;">Positive</h3>
-          <p style="font-size:12px;color:#97A2A5;margin-bottom:12px;">Success states, confirmations.</p>
+          <p style="font-size:12px;color:rgba(35,24,16,0.4);margin-bottom:12px;">Success states, confirmations.</p>
           <div style="display:flex;flex-direction:column;gap:5px;">
             <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#f0fdee;flex-shrink:0;border-right:1px solid #eee;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">positive100</span><span class="swatch-value">#f0fdee</span></div></div>
             <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#cce4cb;flex-shrink:0;border-right:1px solid #eee;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">positive200</span><span class="swatch-value">#cce4cb</span></div></div>
@@ -1193,7 +1193,7 @@
         <!-- accentPrimary / Warning -->
         <div>
           <h3 class="subsection" style="margin-top:0;">accentPrimary / Warning</h3>
-          <p style="font-size:12px;color:#97A2A5;margin-bottom:12px;">Caution states. <strong style="color:#4A4E51;">Never use as text color</strong> — fails contrast.</p>
+          <p style="font-size:12px;color:rgba(35,24,16,0.4);margin-bottom:12px;">Caution states. <strong style="color:rgba(35,24,16,0.8);">Never use as text color</strong> — fails contrast.</p>
           <div style="display:flex;flex-direction:column;gap:5px;">
             <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#fffdee;flex-shrink:0;border-right:1px solid #eee;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">aP100 / w100</span><span class="swatch-value">#fffdee</span></div></div>
             <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#f9eecf;flex-shrink:0;border-right:1px solid #eee;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">aP200 / w200</span><span class="swatch-value">#f9eecf</span></div></div>
@@ -1206,7 +1206,7 @@
         <!-- Negative -->
         <div>
           <h3 class="subsection" style="margin-top:0;">Negative</h3>
-          <p style="font-size:12px;color:#97A2A5;margin-bottom:12px;">Errors, destructive actions, critical alerts.</p>
+          <p style="font-size:12px;color:rgba(35,24,16,0.4);margin-bottom:12px;">Errors, destructive actions, critical alerts.</p>
           <div style="display:flex;flex-direction:column;gap:5px;">
             <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#fff4f0;flex-shrink:0;border-right:1px solid #eee;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">negative100</span><span class="swatch-value">#fff4f0</span></div></div>
             <div class="swatch" style="flex-direction:row;display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><div style="width:36px;height:36px;background:#fdd2c4;flex-shrink:0;border-right:1px solid #eee;"></div><div style="padding:0 10px;display:flex;flex-direction:column;justify-content:center;"><span class="swatch-name" style="font-size:11px;">negative200</span><span class="swatch-value">#fdd2c4</span></div></div>
@@ -1220,7 +1220,7 @@
 
       <!-- ── Brand Colors ────────────────────────────────── -->
       <div style="display:inline-block;background:#D23218;color:#fff;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:24px;">Brand Colors</div>
-      <p style="font-size:14px;color:#6F777A;margin-bottom:32px;margin-top:-16px;">Used in addition to web colors for the website, lending pages, blog, and marketing. These supplement the web palette — do not replace it.</p>
+      <p style="font-size:14px;color:rgba(35,24,16,0.6);margin-bottom:32px;margin-top:-16px;">Used in addition to web colors for the website, lending pages, blog, and marketing. These supplement the web palette — do not replace it.</p>
 
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:40px;">
         <!-- Red + Orange -->
